@@ -32,7 +32,7 @@ public class QuizController {
 		long id= sequenceRepo.getNextSequenceId("quiz") ; 
 		Optional<Quiz> quiz =quizRepository.findById((int)id );
 		quiz.orElse(new Quiz(question,answers,correctAnswer,titleId,sortOrder));
-		quiz.
+		/*quiz.
 		quiz.flatMap(quiz -> {
 			quiz.setQuestion (question);
 			quiz.setAnswers(answers);
@@ -40,8 +40,9 @@ public class QuizController {
 			quiz.setTitleId(titleId);
 			quiz.setSortOrder(sortOrder);
 	
-		});
-				
+		}); */
+		return null;
+	
 	}
-
+	
 }
