@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Quiz List</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/create" class="btn btn-primary"><span class="glyphicon glyphicon-plus-sign"></span> Product</a>
+                </h3>
+                <h2>Product List</h2>
+                <div class="table-responsive">
+                    <table class="table" id="product-table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Question</th>
+                                <th>answers</th>
+                                <th>Correct Answer</th>
+                                 <th>Sort order</th>
+                                <th>title Id</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="quiz : ${quizs}">
+                                <td><a th:text="${quiz.Question}" th:href="@{'/show/' + ${quiz.id}}"></a></td>
+                                <td th:text="${quiz.answers}"></td>
+                                <td th:text="${quiz.correctAnswer}"></td>
+                                 <td th:text="${quiz.sortOrder}"></td>
+                                 <td th:text="${quiz.titleId}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="default">
+    <head>
+        <title>Edit Quiz</title>
+    </head>
+    <body>
+        <div layout:fragment="content" class="row">
+            <div class="col-xs-8 col-md-8">
+                <h3>
+                    <a href="/quiz" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span> Quiz</a>
+                </h3>
+                <h2>Edit Product</h2>
+                <form action="/update">
+                    <div class="form-group">
+                        <label for="email">Question:</label>
+                        <input type="text" class="form-control" name="question" th:value="${quiz.question}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Answer:</label>
+                        <textarea class="form-control" name="answers" cols="60" rows="3" th:text="${quiz.answers}"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correct Answer:</label>
+                        <input type="number" class="form-control" name="correctAnswer" th:value="${quiz.correctAnswer}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">titleId:</label>
+                        <input type="number" class="form-control" name="titleId" th:value="${quiz.titleId}" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">sortOrder:</label>
+                        <input type="number" class="form-control" name="sortOrder" th:value="${quiz.sortOrder}" />
+                    </div>
+                    <input type="hidden" name="id" th:value="${quiz.id}" />
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
