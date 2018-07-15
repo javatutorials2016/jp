@@ -6,10 +6,11 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Service;
 
 import net.javapedia.quiz.javapediaquiz.model.SequenceGen;
 
-
+@Service
 public class SequenceDaoImpl implements SequenceDAO {
 	@Autowired
 	private MongoOperations mongoOperation;

@@ -19,7 +19,7 @@ public Quiz(String question, List<String> answers, int correctAnswer, int titleI
 	}
 
 @Id
-Integer id;
+Long id;
 
 String question;
 
@@ -31,11 +31,11 @@ int titleId;
 
 int sortOrder;
 
-public Integer getId() {
+public Long getId() {
 	return id;
 }
 
-public void setId(Integer id) {
+public void setId(Long id) {
 	this.id = id;
 }
 

@@ -19,8 +19,16 @@ public class QuizController {
 
 	@Autowired
 	QuizRepository quizRepository;
+	
 	@Autowired
 	SequenceDAO sequenceRepo;
+	
+	@RequestMapping("/quiz")
+	public String quiz(Model model) {
+		model.addAttribute("quizs",quizRepository.findAll());
+		return "quiz";
+	}
+	
 	@RequestMapping("/create")
     public String create(Model model) {
         return "create";
@@ -48,6 +56,8 @@ public class QuizController {
 		*/
 		
 		Quiz quiz = new Quiz(question,answers,correctAnswer,titleId,sortOrder);
+		long id= sequenceRepo.getNextSequenceId("quiz") ;
+		quiz.setId(id);
 		quizRepository.save(quiz);
 		 return "redirect:/show/" + quiz.getId();
 	
@@ -55,7 +65,7 @@ public class QuizController {
 	
 	@RequestMapping("/show/{id}")
 	public String show(@PathVariable Integer id, Model model) {
-		model.addAttribute("quiz",quizRepository.findById(id));
+		model.addAttribute("quiz",quizRepository.findById(id).get());
 		return "show";
 	}
 	@RequestMapping("/delete")
