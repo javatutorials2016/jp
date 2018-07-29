@@ -35,7 +35,9 @@ public class QuizController {
     }
 	
 	@RequestMapping("/save")
-	public String save (@RequestParam String question, @RequestParam List<String> answers, @RequestParam int correctAnswer, @RequestParam int titleId, @RequestParam int sortOrder )
+	public String save (@RequestParam String question, @RequestParam String opt1,
+			@RequestParam String opt2,@RequestParam String opt3,@RequestParam String opt4,@RequestParam String opt5,@RequestParam String opt6,
+			@RequestParam int correctAnswer, @RequestParam int titleId, @RequestParam int sortOrder, @RequestParam String explanation )
 	
 	{
 		/*
@@ -55,7 +57,7 @@ public class QuizController {
 		return null;
 		*/
 		
-		Quiz quiz = new Quiz(question,answers,correctAnswer,titleId,sortOrder);
+		Quiz quiz = new Quiz(question,opt1,opt2,opt3,opt4,opt5,opt6,correctAnswer,titleId,sortOrder,explanation);
 		long id= sequenceRepo.getNextSequenceId("quiz") ;
 		quiz.setId(id);
 		quizRepository.save(quiz);
@@ -78,19 +80,26 @@ public class QuizController {
 	
 	@RequestMapping("/edit/{id}")
 	public String edit (@PathVariable Integer id, Model model) {
-		model.addAttribute("quiz", quizRepository.findById(id));
+		model.addAttribute("quiz", quizRepository.findById(id).orElseThrow(IllegalArgumentException::new));
 		return "edit";
 				
 	}
 	
 	@RequestMapping("/update")
-	public String update (@RequestParam Integer id, @RequestParam String question, @RequestParam List<String> answers, @RequestParam int correctAnswer, @RequestParam int titleId, @RequestParam int sortOrder) {
+	public String update (@RequestParam Integer id, @RequestParam String question, @RequestParam String opt1,
+			@RequestParam String opt2,@RequestParam String opt3,@RequestParam String opt4,@RequestParam String opt5,@RequestParam String opt6,
+			@RequestParam int correctAnswer, @RequestParam int titleId, @RequestParam int sortOrder, @RequestParam String explanation ) {
 		Optional<Quiz> quiz = quizRepository.findById(id);
 		 quiz.ifPresent(q -> {q.setQuestion (question);
-			q.setAnswers(answers); 
+			q.setOpt1(opt1);
+			q.setOpt2(opt2);
+			q.setOpt3(opt3);
+			q.setOpt4(opt4);
+			q.setOpt5(opt5);
+			q.setOpt6(opt6);
 			q.setCorrectAnswer(correctAnswer);
 			q.setTitleId(titleId);
-			q.setSortOrder(sortOrder);});
+			q.setSortOrder(sortOrder); q.setExplanation(explanation);});
 		 quizRepository.save(quiz.get());
 		 return "redirect:/show/" + quiz.get().getId();
 		/*
@@ -98,6 +107,18 @@ public class QuizController {
 		q.setTitleId(titleId);
 		q.setSortOrder(sortOrder);
 		*/
+	}
+	
+	@RequestMapping("/attendQuiz/{id}/{qNo}")
+	public String attendQuiz (@PathVariable Integer id, Model model, @PathVariable Integer qNo) {
+		List<Quiz> quizList = quizRepository.findByTitleId(id);
+//		model.addAttribute("quizs", );
+		if (qNo == null || qNo<=0) {
+			model.addAttribute("quizs", quizList.get(0));
+		} else if (qNo<= quizList.size())
+			model.addAttribute("quizs", quizList.get(qNo));
+		return "quiz";
+				
 	}
 	
 	
