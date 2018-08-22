@@ -19,12 +19,36 @@
                         <input type="text" class="form-control" name="question" th:value="${quiz.question}" />
                     </div>
                     <div class="form-group">
-                        <label for="email">Answer:</label>
-                        <textarea class="form-control" name="answers" cols="60" rows="3" th:text="${quiz.answers}"></textarea>
+                        <label for="email">Answer1:</label>
+                        <textarea class="form-control" name="opt1" cols="60" rows="3" th:text="${quiz.opt1}"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Answer2:</label>
+                        <textarea class="form-control" name="opt2" cols="60" rows="3" th:text="${quiz.opt2}"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Answer3:</label>
+                        <textarea class="form-control" name="opt3" cols="60" rows="3" th:text="${quiz.opt3}"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Answer4:</label>
+                        <textarea class="form-control" name="opt4" cols="60" rows="3" th:text="${quiz.opt4}"></textarea>
+                    </div>
+                     <div class="form-group">
+                        <label for="email">Answer5:</label>
+                        <textarea class="form-control" name="opt5" cols="60" rows="3" th:text="${quiz.opt5}"></textarea>
+                    </div>
+                      <div class="form-group">
+                        <label for="email">Answer6:</label>
+                        <textarea class="form-control" name="opt6" cols="60" rows="3" th:text="${quiz.opt6}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="email">Correct Answer:</label>
                         <input type="number" class="form-control" name="correctAnswer" th:value="${quiz.correctAnswer}" />
+                    </div>
+                         <div class="form-group">
+                        <label for="email">Explanation:</label>
+                        <textarea class="form-control" name="explanation" cols="60" rows="3" th:text="${quiz.explanation}"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="email">titleId:</label>

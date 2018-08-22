@@ -9,13 +9,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 public class Quiz {
 	
-public Quiz(String question, List<String> answers, int correctAnswer, int titleId, int sortOrder) {
+public Quiz(String question, String opt1, String opt2, String opt3,String opt4, String opt5, String opt6,int correctAnswer, int titleId, int sortOrder,String explanation) {
 		super();
 		this.question = question;
-		this.answers = answers;
 		this.correctAnswer = correctAnswer;
 		this.titleId = titleId;
 		this.sortOrder = sortOrder;
+		this.opt1 = opt1;
+		this.opt2 = opt2;
+		this.opt3 = opt3;
+		this.opt4 = opt4;
+		this.opt5 = opt5;
+		this.opt6 = opt6;
+		this.explanation = explanation;
 	}
 
 @Id
@@ -23,13 +29,20 @@ Long id;
 
 String question;
 
-List<String> answers;
+String opt1;
+String opt2;
+String opt3;
+String opt4;
+String opt5;
+String opt6;
 
 int correctAnswer;
 
 int titleId;
 
 int sortOrder;
+
+String explanation;
 
 public Long getId() {
 	return id;
@@ -45,14 +58,6 @@ public String getQuestion() {
 
 public void setQuestion(String question) {
 	this.question = question;
-}
-
-public List<String> getAnswers() {
-	return answers;
-}
-
-public void setAnswers(List<String> answers) {
-	this.answers = answers;
 }
 
 public int getCorrectAnswer() {
@@ -77,6 +82,62 @@ public int getSortOrder() {
 
 public void setSortOrder(int sortOrder) {
 	this.sortOrder = sortOrder;
+}
+
+public String getExplanation() {
+	return explanation;
+}
+
+public void setExplanation(String explanation) {
+	this.explanation = explanation;
+}
+
+public String getOpt1() {
+	return opt1;
+}
+
+public void setOpt1(String opt1) {
+	this.opt1 = opt1;
+}
+
+public String getOpt2() {
+	return opt2;
+}
+
+public void setOpt2(String opt2) {
+	this.opt2 = opt2;
+}
+
+public String getOpt3() {
+	return opt3;
+}
+
+public void setOpt3(String opt3) {
+	this.opt3 = opt3;
+}
+
+public String getOpt4() {
+	return opt4;
+}
+
+public void setOpt4(String opt4) {
+	this.opt4 = opt4;
+}
+
+public String getOpt5() {
+	return opt5;
+}
+
+public void setOpt5(String opt5) {
+	this.opt5 = opt5;
+}
+
+public String getOpt6() {
+	return opt6;
+}
+
+public void setOpt6(String opt6) {
+	this.opt6 = opt6;
 }
 
 }

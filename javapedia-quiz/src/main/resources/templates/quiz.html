@@ -19,17 +19,31 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Question</th>
-                                <th>answers</th>
+                                <th>answer1</th>
+                                <th>answer2</th>
+                                <th>answer3</th>
+                                <th>answer4</th>
+                                <th>answer5</th>
+                                <th>answer6</th>
                                 <th>Correct Answer</th>
+                                <th>Explanation</th>
                                  <th>Sort order</th>
                                 <th>title Id</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="quiz : ${quizs}">
+                             	<td th:text="${quiz.id}"></td>
                                 <td><a th:text="${quiz.Question}" th:href="@{'/show/' + ${quiz.id}}"></a></td>
-                                <td th:text="${quiz.answers}"></td>
+                                <td th:text="${quiz.opt1}"></td>
+                                <td th:text="${quiz.opt2}"></td>
+                                <td th:text="${quiz.opt3}"></td>
+                                <td th:text="${quiz.opt4}"></td>
+                                <td th:text="${quiz.opt5}"></td>
+                                <td th:text="${quiz.opt6}"></td>
                                 <td th:text="${quiz.correctAnswer}"></td>
+                                <td th:text="${quiz.explanation}"></td>
                                  <td th:text="${quiz.sortOrder}"></td>
                                  <td th:text="${quiz.titleId}"></td>
                             </tr>
@@ -40,3 +54,4 @@
         </div>
     </body>
 </html>
+
