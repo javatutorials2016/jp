@@ -65,7 +65,7 @@ public class QuizController {
 	
 	@RequestMapping("/show/{id}")
 	public String show(@PathVariable Integer id, Model model) {
-		model.addAttribute("quiz",quizRepository.findById(id).get());
+		model.addAttribute("quiz",quizRepository.findById(id).orElseThrow(IllegalArgumentException::new));
 		return "show";
 	}
 	@RequestMapping("/delete")
@@ -78,7 +78,7 @@ public class QuizController {
 	
 	@RequestMapping("/edit/{id}")
 	public String edit (@PathVariable Integer id, Model model) {
-		model.addAttribute("quiz", quizRepository.findById(id));
+		model.addAttribute("quiz", quizRepository.findById(id).orElseThrow(IllegalArgumentException::new));
 		return "edit";
 				
 	}
